@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../stylesheets/style2.css">
+</head>
+<body>
+    <div id="main">
+      <div id="top">
+        <div id="top1">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Visual_Studio_Code_1.35_icon.png" alt="">
+          <h6>File</h6>
+          <h6>Edit</h6>
+          <h6>Selection</h6>
+          <h6>View</h6>
+          <h6>Go</h6>
+          <h6>Run</h6>
+          <h6>Terminal</h6>
+          <h6>Help</h6>
+        </div>
+        <div id="top2">
+          <img src="../images/minus.png" alt="">
+          <img src="../images/squares.png" alt="">
+          <img src="../images/x.png" alt="">
+        </div>
+      </div>
+      <div class="bottom">
+        <div id="wrapper-left">
+          <div id="wrappericons">
+            <i id="file" class="ri-file-3-line"></i>
+            <i id="a" class="ri-search-line"></i>
+            <i class="ri-git-branch-line"></i>
+            <i class="ri-bug-line"></i>
+            <img src="../images/extension.png" alt="">
+          </div>
+            <div id="setting">
+              <i class="ri-account-circle-line"></i>
+            <i class="ri-settings-5-line"></i>
+          </div>
+          </div>
+        <div class="wrapper-right">
+        <div id="left">
+          <div id="elem1">
+          <div id="filename">
+            <i class="ri-arrow-down-s-line"></i> 
+               <h2>Folder name</h2>
+              </div>
+         <div id="elemicon">
+           <i id="fileicon" class="ri-file-add-line"></i>
+           <i id="foldericon" class="ri-folder-add-line"></i>
+           <a href="/refresh"><i id="Refreshicon" class="ri-refresh-line"></i></a>
+     </div>
+    </div>
+         <div id="files">
+            <form id="fileform" action="/createfile">
+                <input type="text" name="filename" placeholder="filename">
+              </form>
+              <form id="folderform" action="/createfolder">
+                <input type="text" name="foldername" placeholder="foldername">
+              </form>
+           <!-- <div id="folder">
+             <i class="ri-folder-3-line"></i>
+              <h2>images</h2>
+           </div> -->
+           
+           <% files.forEach(function(val){ %>
+            <div class="elem">
+              <div class="elemleft">
+                <% if(val.isDirectory()) { %>
+                <i class="ri-folder-3-line"></i>   
+                <h2><%= val.name %></h2>
+                <% } else { %>
+                <a href="/file/<%= val.name %>">
+                <i class="ri-file-3-line"></i>
+                <h2><%= val.name %></h2>
+              </a>
+                <% } %>
+              </div>
+              <div class="elemright">
+                <i class="ri-pencil-fill"></i>
+                <% if(val.isDirectory())  { %>
+                <a href="/delete/folder/<%= val.name %>"><i class="ri-delete-bin-line"></i></a>
+                  <% } else { %>
+               <a href="/delete/file/<%= val.name %>"><i class="ri-delete-bin-line"></i></a>
+                 <% } %>
+              </div>
+            </div>
+          <% }) %>
+         </div>
+        </div>
+        <div id="right">
+          <div class="rnav">
+            <div class="file"><%= filename %><a href="/vscode"><i class="ri-close-line"></i></a></div>
+        </div>
+        <form action="/update/<%= filename %>" method="post">
+          <textarea name="data" style="resize: none;"><%= filedata%></textarea>
+          <input id="submitbtn" type="submit" value="Save File">
+           </form>
+          </div>
+        </div>
+      </div>
+    </div>
+       <script src="../javascripts/script.js"></script>
+</body>
+</html>
