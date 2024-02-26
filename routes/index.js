@@ -4,7 +4,7 @@ const fs = require("fs");
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 
-//   res.render('index', { title: 'Express' });
+//   res.render('vscode');
 // });
 
 router.get('/',function(req,res){
