@@ -6,6 +6,7 @@ function donoOffKaro(){
 }
 
 document.querySelector("#files").addEventListener("click",function(dets){
+  console.log(dets)
   if(dets.target.id === "edit"){
     var val = dets.srcElement.parentElement.parentElement.textContent.trim();
     document.querySelector("#inp").value = val;

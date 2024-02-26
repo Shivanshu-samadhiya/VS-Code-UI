@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 const fs = require("fs");
 /* GET home page. */
-router.get('/', function(req, res, next) {
+// router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'Express' });
-});
+//   res.render('index', { title: 'Express' });
+// });
 
-router.get('/vscode',function(req,res){
+router.get('/',function(req,res){
   fs.readdir('./uploads',{withFileTypes:true},function(err,files){
     res.render('vscode',{files:files});
   })
@@ -23,6 +23,7 @@ router.get("/refresh",function(req,res){
 
 router.get('/file/:filename',function(req,res){
   fs.readdir(`./uploads`,{withFileTypes:true},function(err,files){
+    console.log(files)
     fs.readFile(`./uploads/${req.params.filename}`,"utf-8",function(err,filedata){
     res.render("opened",{files:files,filename:req.params.filename,filedata});
   })
